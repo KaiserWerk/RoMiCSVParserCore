@@ -8,7 +8,7 @@ See LICENSE.md
 
 ## Contributing
 
-...
+Robin Kaiser, Michael Hoffmann
 
 ## Installation
 
