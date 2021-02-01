@@ -67,6 +67,13 @@ namespace RoMiCSVParserCore
                         if (canDoIt)
                             prop.SetValue(item, value);
                     }
+                    else if(prop.PropertyType == typeof(DateTime))
+                    {
+                        canDoIt = DateTime.TryParse(fields[i], out DateTime value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                    }
+
                     else if (prop.PropertyType == typeof(string))
                     {
                         prop.SetValue(item, fields[i]);
