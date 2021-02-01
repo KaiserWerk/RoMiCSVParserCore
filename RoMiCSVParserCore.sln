@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLI", "CLI\CLI.csproj", "{D029E239-96B3-4F51-8AA4-0EB62EB1B895}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoMiCSVParserCore", "RoMiCSVParserCore\RoMiCSVParserCore.csproj", "{CA2B88E5-4220-4AF3-B537-DB59EC225CF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D029E239-96B3-4F51-8AA4-0EB62EB1B895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D029E239-96B3-4F51-8AA4-0EB62EB1B895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D029E239-96B3-4F51-8AA4-0EB62EB1B895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D029E239-96B3-4F51-8AA4-0EB62EB1B895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA2B88E5-4220-4AF3-B537-DB59EC225CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA2B88E5-4220-4AF3-B537-DB59EC225CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA2B88E5-4220-4AF3-B537-DB59EC225CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA2B88E5-4220-4AF3-B537-DB59EC225CF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28B5EF90-73CB-42B1-B7DE-390C055AA076}
+	EndGlobalSection
+EndGlobal
