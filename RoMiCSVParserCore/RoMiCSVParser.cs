@@ -6,6 +6,10 @@ namespace RoMiCSVParserCore
 {
     public static class RoMiCSVParser
     {
+        /// <How_to_Serialize>
+        /// Call method from any type that implements IEnumerable. e.g. a List named personList of type<Person> could be called with:
+        /// RoMiCSVParser.Serialize<Person>(personList);
+        /// </How_to_Serialize>
         public static string Serialize<T>(IEnumerable<T> objList, string fieldSeparator = ";") where T : new()
         {
             List<string> resultList = new List<string>();
@@ -29,6 +33,12 @@ namespace RoMiCSVParserCore
 
             return string.Join(Environment.NewLine, resultList);
         }
+
+        /// <How_to_deserialize>
+        ///  Pass the parameters for all properties of your object. E.g. an object with the properties 'int Age' and 'string Name' would be called as followed:
+        ///  var result = RoMiCSVParser.Deserialize<Person>("18; Ingo")
+        /// </How_to_deserialize>
+
 
         public static IEnumerable<T> Deserialize<T>(string csv, string fieldSeparator = ";") where T : new()
         {
