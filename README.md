@@ -1,6 +1,6 @@
 # RoMiCSVParserCore
 
-Hier steht dann bald der interessante Text.
+A simple and easy-to-use library to serialize and deserialize CSV data. 
 
 ## License
 
@@ -8,7 +8,7 @@ See LICENSE.md
 
 ## Contributing
 
-...
+Robin Kaiser, Michael Hoffmann
 
 ## Installation
 
@@ -16,7 +16,7 @@ Install the nuget package __RoMiCSVParserCore__ or use this command in the
 package manager console:
 
 ```
-Install-Package RoMiCSVParserCore -Version 1.0.1
+Install-Package RoMiCSVParserCore -Version 1.0.2
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ Install-Package RoMiCSVParserCore -Version 1.0.1
 Import the namespace RoMiCSVParser.
 
 The __RoMiCSVParserCore__ package supports the data types string, int, 
-double, bool and char. DateTimes are Work In Progress!
+double, bool and char. DateTime is included as of Version 1.0.2
 
 In the following examples, *Person* is a class with some arbitrary fields with primitive data types.
 
