@@ -7,8 +7,8 @@ namespace RoMiCSVParserCore
     public static class RoMiCSVParser
     {
         /// <How_to_Serialize>
-        /// Call method from any type that implements IEnumerable. e.g. a List named personList of type<Person> could be called with:
-        /// RoMiCSVParser.Serialize<Person>(personList);
+        /// Call method from any type that implements IEnumerable. e.g. a List named personList of type Person could be called with:
+        /// string result = RoMiCSVParser.Serialize<Person>(personList);
         /// </How_to_Serialize>
         public static string Serialize<T>(IEnumerable<T> objList, string fieldSeparator = ";") where T : new()
         {
@@ -35,11 +35,9 @@ namespace RoMiCSVParserCore
         }
 
         /// <How_to_deserialize>
-        ///  Pass the parameters for all properties of your object. E.g. an object with the properties 'int Age' and 'string Name' would be called as followed:
-        ///  var result = RoMiCSVParser.Deserialize<Person>("18; Ingo")
+        /// Pass the parameters for all properties of your object. E.g. an object with the properties 'int Age' and 'string Name' would be called as followed:
+        /// IEnumerable<Person> result = RoMiCSVParser.Deserialize<Person>("18; Ingo")
         /// </How_to_deserialize>
-
-
         public static IEnumerable<T> Deserialize<T>(string csv, string fieldSeparator = ";") where T : new()
         {
             List<T> resultList = new List<T>();
@@ -59,7 +57,13 @@ namespace RoMiCSVParserCore
                 foreach (PropertyInfo prop in props)
                 {
                     bool canDoIt;
-                    if (prop.PropertyType == typeof(double))
+                    if (prop.PropertyType == typeof(DateTime))
+                    {
+                        canDoIt = DateTime.TryParse(fields[i], out DateTime value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                    }
+                    else if (prop.PropertyType == typeof(double))
                     {
                         canDoIt = double.TryParse(fields[i], out double value);
                         if (canDoIt)
@@ -77,13 +81,6 @@ namespace RoMiCSVParserCore
                         if (canDoIt)
                             prop.SetValue(item, value);
                     }
-                    else if(prop.PropertyType == typeof(DateTime))
-                    {
-                        canDoIt = DateTime.TryParse(fields[i], out DateTime value);
-                        if (canDoIt)
-                            prop.SetValue(item, value);
-                    }
-
                     else if (prop.PropertyType == typeof(string))
                     {
                         prop.SetValue(item, fields[i]);
