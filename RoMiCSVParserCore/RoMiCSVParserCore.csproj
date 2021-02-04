@@ -9,7 +9,7 @@
 Icon made by Freepik (https://www.freepik.com)</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>csv.png</PackageIcon>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <AssemblyVersion>1.0.3</AssemblyVersion>
     <FileVersion>1.0.3</FileVersion>
     <PackageProjectUrl>https://github.com/KaiserWerk/RoMiCSVParserCore</PackageProjectUrl>
