@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 
 namespace RoMiCSVParserCore
@@ -34,6 +35,11 @@ namespace RoMiCSVParserCore
             return string.Join(Environment.NewLine, resultList);
         }
 
+        public static void SerializeToFile<T>(IEnumerable<T> objList, string filename, string fieldSeparator = ";") where T : new()
+        {
+            File.WriteAllText(filename, Serialize(objList, fieldSeparator));
+        }
+
         /// <How_to_deserialize>
         /// Pass the parameters for all properties of your object. E.g. an object with the properties 'int Age' and 'string Name' would be called as followed:
         /// IEnumerable<Person> result = RoMiCSVParser.Deserialize<Person>("18; Ingo")
@@ -63,9 +69,21 @@ namespace RoMiCSVParserCore
                         if (canDoIt)
                             prop.SetValue(item, value);
                     }
+                    else if (prop.PropertyType == typeof(float))
+                    {
+                        canDoIt = float.TryParse(fields[i], out float value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                    }
                     else if (prop.PropertyType == typeof(double))
                     {
                         canDoIt = double.TryParse(fields[i], out double value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                    }
+                    else if (prop.PropertyType == typeof(decimal))
+                    {
+                        canDoIt = decimal.TryParse(fields[i], out decimal value);
                         if (canDoIt)
                             prop.SetValue(item, value);
                     }
@@ -99,6 +117,11 @@ namespace RoMiCSVParserCore
             }
 
             return resultList;
+        }
+
+        public static IEnumerable<T> DeserializeFromFile<T>(string filename, string fieldSeparator = ";") where T : new()
+        {
+            return Deserialize<T>(File.ReadAllText(filename), fieldSeparator);
         }
     }
 }
