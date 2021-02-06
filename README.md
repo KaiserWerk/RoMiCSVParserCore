@@ -42,7 +42,7 @@ How to serialize:
 List<Person> list = <some collection data>
 string csvContent = RoMiCSVParser.Serialize<Person>(list);
 
-// do stuff with the CSV content string, e.g. write to file
+// do stuff with the CSV content string
 ```
 
 How to deserialize
@@ -53,4 +53,10 @@ IEnumerable<Person> people = RoMiCSVParser.Deserialize<Person>(csvContent);
 // use the people like the tyrant you are
 ```
 
+Coming with version 1.1.0, there are also two convenience methods:
 
+```csharp
+public static void SerializeToFile<T>(IEnumerable<T> objList, string filename, string fieldSeparator = ";") where T : new()
+// and
+public static IEnumerable<T> DeserializeFromFile<T>(string filename, string fieldSeparator = ";") where T : new()
+```
