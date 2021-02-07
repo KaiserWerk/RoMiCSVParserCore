@@ -17,10 +17,10 @@ PM> Install-Package RoMiCSVParserCore
 
 ## Usage
 
-Import the namespace RoMiCSVParser.
+Import the namespace RoMiCSVParserCore.
 
 The __RoMiCSVParserCore__ package supports the data types DateTime, string, int, 
-double, bool and char.
+float, double, decimal, bool and char.
 
 In the following examples, *Person* is a class with some arbitrary fields with primitive data types 
 which looks like this:
