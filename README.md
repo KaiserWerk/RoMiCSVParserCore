@@ -56,7 +56,7 @@ IEnumerable<Person> people = RoMiCSVParser.Deserialize<Person>(csvContent);
 Coming with version 1.1.0, there are also two convenience methods:
 
 ```csharp
-public static void SerializeToFile<T>(IEnumerable<T> objList, string filename, string fieldSeparator = ";") where T : new()
+void SerializeToFile<T>(IEnumerable<T> objList, string filename, string fieldSeparator = ";")
 // and
-public static IEnumerable<T> DeserializeFromFile<T>(string filename, string fieldSeparator = ";") where T : new()
+IEnumerable<T> DeserializeFromFile<T>(string filename, string fieldSeparator = ";")
 ```
