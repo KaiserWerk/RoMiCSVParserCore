@@ -28,14 +28,14 @@ Import the namespace __RoMiCSVParserCore__.
 The __RoMiCSVParserCore__ package supports the following data types:
 
 * ```DateTime, DateTime?, Nullable<DateTime>```
-* int, int?, Nullable<int>, 
-* float, float?, Nullable<float>
-* double, double?, Nullable<double>
-* decimal, decimal?, Nullable<decimal>
-* bool, bool?, Nullable<bool>
-* byte byte?, Nullable<byte>
-* char, char?, Nullable<char> 
-* string :)
+* ```int, int?, Nullable<int>```
+* ```float, float?, Nullable<float>```
+* ```double, double?, Nullable<double>```
+* ```decimal, decimal?, Nullable<decimal>```
+* ```bool, bool?, Nullable<bool>```
+* ```byte byte?, Nullable<byte>```
+* ```char, char?, Nullable<char> ```
+* ```string``` :)
 
 
 
