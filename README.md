@@ -27,7 +27,7 @@ Import the namespace __RoMiCSVParserCore__.
 
 The __RoMiCSVParserCore__ package supports the following data types:
 
-* DateTime, DateTime?, Nullable<DateTime>
+* ```DateTime, DateTime?, Nullable<DateTime>```
 * int, int?, Nullable<int>, 
 * float, float?, Nullable<float>
 * double, double?, Nullable<double>
