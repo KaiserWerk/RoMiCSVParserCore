@@ -69,11 +69,27 @@ namespace RoMiCSVParserCore
                         if (canDoIt)
                             prop.SetValue(item, value);
                     }
+                    if (prop.PropertyType == typeof(DateTime?) || prop.PropertyType == typeof(Nullable<DateTime>))
+                    {
+                        canDoIt = DateTime.TryParse(fields[i], out DateTime value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                        else
+                            prop.SetValue(item, null);
+                    }
                     else if (prop.PropertyType == typeof(float))
                     {
                         canDoIt = float.TryParse(fields[i], out float value);
                         if (canDoIt)
                             prop.SetValue(item, value);
+                    }
+                    else if (prop.PropertyType == typeof(float?) || prop.PropertyType == typeof(Nullable<float>))
+                    {
+                        canDoIt = float.TryParse(fields[i], out float value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                        else
+                            prop.SetValue(item, null);
                     }
                     else if (prop.PropertyType == typeof(double))
                     {
@@ -81,11 +97,27 @@ namespace RoMiCSVParserCore
                         if (canDoIt)
                             prop.SetValue(item, value);
                     }
+                    else if (prop.PropertyType == typeof(double?) || prop.PropertyType == typeof(Nullable<double>))
+                    {
+                        canDoIt = double.TryParse(fields[i], out double value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                        else
+                            prop.SetValue(item, null);
+                    }
                     else if (prop.PropertyType == typeof(decimal))
                     {
                         canDoIt = decimal.TryParse(fields[i], out decimal value);
                         if (canDoIt)
                             prop.SetValue(item, value);
+                    }
+                    else if (prop.PropertyType == typeof(decimal?) || prop.PropertyType == typeof(Nullable<decimal>))
+                    {
+                        canDoIt = decimal.TryParse(fields[i], out decimal value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                        else
+                            prop.SetValue(item, null);
                     }
                     else if (prop.PropertyType == typeof(int))
                     {
@@ -93,21 +125,62 @@ namespace RoMiCSVParserCore
                         if (canDoIt)
                             prop.SetValue(item, value);
                     }
+                    else if (prop.PropertyType == typeof(int?) || prop.PropertyType == typeof(Nullable<int>))
+                    {
+                        canDoIt = int.TryParse(fields[i], out int value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                        else
+                            prop.SetValue(item, null);
+                    }
                     else if (prop.PropertyType == typeof(bool))
                     {
                         canDoIt = bool.TryParse(fields[i], out bool value);
                         if (canDoIt)
                             prop.SetValue(item, value);
                     }
+                    else if (prop.PropertyType == typeof(bool?) || prop.PropertyType == typeof(Nullable<bool>))
+                    {
+                        canDoIt = bool.TryParse(fields[i], out bool value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                        else
+                            prop.SetValue(item, null);
+                    }
                     else if (prop.PropertyType == typeof(string))
                     {
-                        prop.SetValue(item, fields[i]);
+                        if (fields[i] == string.Empty || fields[i].ToLowerInvariant() == "null")
+                            prop.SetValue(item, null);
+                        else
+                            prop.SetValue(item, fields[i]);
                     }
                     else if (prop.PropertyType == typeof(char))
                     {
                         canDoIt = char.TryParse(fields[i], out char value);
                         if (canDoIt)
                             prop.SetValue(item, value);
+                    }
+                    else if (prop.PropertyType == typeof(char?) || prop.PropertyType == typeof(Nullable<char>))
+                    {
+                        canDoIt = char.TryParse(fields[i], out char value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                        else
+                            prop.SetValue(item, null);
+                    }
+                    else if (prop.PropertyType == typeof(byte))
+                    {
+                        canDoIt = byte.TryParse(fields[i], out byte value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                    }
+                    else if (prop.PropertyType == typeof(byte?) || prop.PropertyType == typeof(Nullable<byte>))
+                    {
+                        canDoIt = byte.TryParse(fields[i], out byte value);
+                        if (canDoIt)
+                            prop.SetValue(item, value);
+                        else
+                            prop.SetValue(item, null);
                     }
 
                     i++;
