@@ -18,7 +18,7 @@ PM> Install-Package RoMiCSVParserCore
 ## Roadmap
 
 * Implement the rest of the primitive, built-in data types [See MSDN docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types).
-* Optional parameter `fieldEncloser` with the default value of string.Empty (double quotes), 
+* Optional parameter `fieldEncloser` with the default value of string.Empty (just an empty string), 
   which can be used to enclose every field, if the need arises
 
 ## Usage
