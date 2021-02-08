@@ -15,12 +15,31 @@ package manager console:
 PM> Install-Package RoMiCSVParserCore
 ```
 
+## Roadmap
+
+* Implement the rest of the primitive, built-in data types [See MSDN docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types).
+* Optional parameter `fieldEncloser` with the default value of string.Empty (double quotes), 
+  which can be used to enclose every field, if the need arises
+
 ## Usage
 
-Import the namespace RoMiCSVParserCore.
+Import the namespace __RoMiCSVParserCore__.
 
-The __RoMiCSVParserCore__ package supports the data types DateTime, string, int, 
-float, double, decimal, bool and char.
+The __RoMiCSVParserCore__ package supports the following data types:
+
+* DateTime, DateTime?, Nullable<DateTime>
+* int, int?, Nullable<int>, 
+* float, float?, Nullable<float>
+* double, double?, Nullable<double>
+* decimal, decimal?, Nullable<decimal>
+* bool, bool?, Nullable<bool>
+* byte byte?, Nullable<byte>
+* char, char?, Nullable<char> 
+* string :)
+
+
+
+## Example
 
 In the following examples, *Person* is a class with some arbitrary fields with primitive data types 
 which looks like this:
@@ -40,6 +59,7 @@ How to serialize:
 ```csharp
 
 List<Person> list = <some collection data>
+// the second parameter is optional
 string csvContent = RoMiCSVParser.Serialize<Person>(list);
 
 // do stuff with the CSV content string
@@ -48,12 +68,13 @@ string csvContent = RoMiCSVParser.Serialize<Person>(list);
 How to deserialize
 ```csharp
 string csvContent = File.ReadAllText("people.csv");
+// the second parameter is optional
 IEnumerable<Person> people = RoMiCSVParser.Deserialize<Person>(csvContent);
 
 // use the people like the tyrant you are
 ```
 
-Coming with version 1.1.0, there are also two convenience methods:
+Alternatively, you can use the convenience methods:
 
 ```csharp
 void SerializeToFile<T>(IEnumerable<T> objList, string filename, string fieldSeparator = ";")
