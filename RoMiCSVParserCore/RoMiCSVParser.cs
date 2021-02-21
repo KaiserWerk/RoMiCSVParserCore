@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using RoMiCSVParserCore.Attribute;
+using RoMiCSVParserCore.Exception;
 
 namespace RoMiCSVParserCore
 {
@@ -19,10 +21,20 @@ namespace RoMiCSVParserCore
             {
                 Type type = obj.GetType();
                 PropertyInfo[] props = type.GetProperties();
-                string[] fields = new string[props.Length];
+                int arrLen = props.Length;
+                foreach (PropertyInfo prop in props)
+                {
+                    if (System.Attribute.IsDefined(prop, typeof(CsvPropertyIgnoreAttribute)))
+                        arrLen--;
+                }
+
+                string[] fields = new string[arrLen];
                 int i = 0;
                 foreach (PropertyInfo prop in props)
                 {
+                    if (System.Attribute.IsDefined(prop, typeof(CsvPropertyIgnoreAttribute)))
+                        continue;
+
                     if (prop.GetValue(obj) != null)
                         fields[i] = prop.GetValue(obj).ToString();
                     else
@@ -40,10 +52,16 @@ namespace RoMiCSVParserCore
             File.WriteAllText(filename, Serialize(objList, fieldSeparator));
         }
 
-        /// <How_to_deserialize>
+        /// <summary>
         /// Pass the parameters for all properties of your object. E.g. an object with the properties 'int Age' and 'string Name' would be called as followed:
-        /// IEnumerable<Person> result = RoMiCSVParser.Deserialize<Person>("18; Ingo")
-        /// </How_to_deserialize>
+        /// IEnumerable<Person> result = RoMiCSVParser.Deserialize<Person>("18;Ingo")
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="csv"></param>
+        /// <param name="fieldSeparator"></param>
+        /// <returns>IEnumerable</returns>
+        /// <exception cref="PropertyCountMismatchException"></exception>
+        /// <exception cref="UnsupportedPropertyTypeException"></exception>
         public static IEnumerable<T> Deserialize<T>(string csv, string fieldSeparator = ";") where T : new()
         {
             List<T> resultList = new List<T>();
@@ -57,11 +75,14 @@ namespace RoMiCSVParserCore
 
                 string[] fields = line.Split(fieldSeparator);
                 if (fields.Length != props.Length)
-                    throw new Exception($"wrong property count: props has {props.Length}, fields has {fields.Length}");
+                    throw new PropertyCountMismatchException($"Wrong property count: there are {props.Length} properties, but {fields.Length} fields");
 
                 int i = 0;
                 foreach (PropertyInfo prop in props)
                 {
+                    if (System.Attribute.IsDefined(prop, typeof(CsvPropertyIgnoreAttribute)))
+                        continue;
+
                     bool canDoIt;
                     if (prop.PropertyType == typeof(DateTime))
                     {
@@ -181,6 +202,10 @@ namespace RoMiCSVParserCore
                             prop.SetValue(item, value);
                         else
                             prop.SetValue(item, null);
+                    }
+                    else
+                    {
+                        throw new UnsupportedPropertyTypeException($"The property type {prop.PropertyType.ToString()} is not supported");
                     }
 
                     i++;
