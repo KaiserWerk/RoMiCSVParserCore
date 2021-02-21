@@ -43,7 +43,7 @@ The __RoMiCSVParserCore__ package supports the following data types:
 ## Example
 
 In the following examples, *Person* is a class with some arbitrary fields with primitive data types 
-which looks like this:
+which might look like this. Use the `[CsvPropertyIgnore]` attribute to ignore properties for (de)serialization.
 
 ```csharp
 public class Person
@@ -53,6 +53,8 @@ public class Person
 	public int Age { get; set; }
 	public double Salary { get; set; }
 	public bool IsMarried { get; set; }
+	[CsvPropertyIgnore]
+	public int NumberOfChildren { get; set; }
 }
 ```
 
@@ -68,7 +70,7 @@ string csvContent = RoMiCSVParser.Serialize<Person>(list);
 
 How to deserialize
 ```csharp
-string csvContent = File.ReadAllText("people.csv");
+string csvContent = <some source>;
 // the second parameter is optional
 IEnumerable<Person> people = RoMiCSVParser.Deserialize<Person>(csvContent);
 
