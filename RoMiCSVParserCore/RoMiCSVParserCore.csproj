@@ -4,14 +4,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Robin Kaiser, Michael Hoffmann</Authors>
     <Company />
-    <Description>A very simple, easy-to-use library to serialize and deserialize CSV data.
+    <Description>A very simple, easy-to-use library to serialize and deserialize CSV data from most primitive data types. If problems occur, please open an issue on GitHub.
 
 Icon made by Freepik (https://www.freepik.com)</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>csv.png</PackageIcon>
-    <Version>1.2.0</Version>
-    <AssemblyVersion>1.2.0</AssemblyVersion>
-    <FileVersion>1.2.0</FileVersion>
+    <Version>1.3.0</Version>
+    <AssemblyVersion>1.3.0</AssemblyVersion>
+    <FileVersion>1.3.0</FileVersion>
     <PackageProjectUrl>https://github.com/KaiserWerk/RoMiCSVParserCore</PackageProjectUrl>
   </PropertyGroup>
 
