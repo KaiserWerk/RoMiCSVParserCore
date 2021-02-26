@@ -1,6 +1,6 @@
 # RoMiCSVParserCore
 
-A simple and easy-to-use library to serialize and deserialize CSV data. 
+A simple and easy-to-use .NET Core library to serialize and deserialize CSV data. 
 
 ## License
 
